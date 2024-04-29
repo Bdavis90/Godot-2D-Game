@@ -451,7 +451,7 @@ _data = {
 "RESET": SubResource("Animation_hk61c")
 }
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["Camera"]]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-9, 42)
@@ -527,3 +527,6 @@ position = Vector2(1117, -24)
 
 [node name="Slime" parent="." instance=ExtResource("6_wev6c")]
 position = Vector2(540, 76)
+
+[node name="Slime2" parent="." instance=ExtResource("6_wev6c")]
+position = Vector2(65, 93)
