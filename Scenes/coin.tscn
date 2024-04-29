@@ -105,7 +105,7 @@ script = ExtResource("1_wrb88")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i10ui")
 autoplay = "default"
-frame_progress = 0.555509
+frame_progress = 0.857137
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fafe")
