@@ -502,7 +502,7 @@ position = Vector2(485, 31)
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform" parent="Platforms" instance=ExtResource("3_cse00")]
-position = Vector2(31, 38)
+position = Vector2(26, 38)
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("3_cse00")]
 position = Vector2(360, 68)
