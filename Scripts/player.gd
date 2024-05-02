@@ -1,11 +1,15 @@
 extends CharacterBody2D
+class_name Player
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
-@onready var animated_sprite = $AnimatedSprite2D
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+@onready var hurt_sound = $HurtSound
+@onready var animated_sprite = $AnimatedSprite2D
+var isHurting = false
+var lives = 3
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -29,10 +33,13 @@ func _physics_process(delta):
 	
 	# Play animations
 	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("idle")
-		else:
-			animated_sprite.play("run")
+		if isHurting:
+			animated_sprite.play("hurt")
+		elif not isHurting:
+			if direction == 0:
+				animated_sprite.play("idle")
+			else:
+				animated_sprite.play("run")
 	else:
 		animated_sprite.play("jumping")
 		

@@ -8,6 +8,10 @@ var coinsStr = "coins"
 
 func _ready():
 	totalCoins = coins.get_child_count()
+	
+func _process(delta):
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
 
 func add_point():
 	score += 1

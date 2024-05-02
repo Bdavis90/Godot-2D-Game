@@ -1,7 +1,24 @@
-[gd_scene load_steps=26 format=3 uid="uid://b64obw1264rpd"]
+[gd_scene load_steps=32 format=3 uid="uid://b64obw1264rpd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_j7i0r"]
 [ext_resource type="Texture2D" uid="uid://pmhbktwjlhob" path="res://Assets/sprites/knight.png" id="1_v1mj0"]
+[ext_resource type="AudioStream" uid="uid://c4ls2ch1g3hy1" path="res://Assets/sounds/hurt.wav" id="3_b6tjl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7mtj"]
+atlas = ExtResource("1_v1mj0")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg06c"]
+atlas = ExtResource("1_v1mj0")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kbor"]
+atlas = ExtResource("1_v1mj0")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv5m"]
+atlas = ExtResource("1_v1mj0")
+region = Rect2(96, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7adxf"]
 atlas = ExtResource("1_v1mj0")
@@ -91,6 +108,23 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_s7mtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg06c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kbor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv5m")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7adxf")
 }, {
 "duration": 1.0,
@@ -168,6 +202,20 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_7jnuk"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_c58da"]
 radius = 5.0
 
@@ -179,10 +227,15 @@ script = ExtResource("1_j7i0r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_4uml7")
-animation = &"run"
+animation = &"hurt"
 autoplay = "idle"
-frame_progress = 0.00157387
+frame_progress = 0.513422
+script = SubResource("GDScript_7jnuk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_c58da")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b6tjl")
+bus = &"SFX"
