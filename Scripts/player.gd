@@ -8,8 +8,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var hurt_sound = $HurtSound
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var game_manager = %GameManager
+
 var isHurting = false
 var lives = 3
+
+func _ready():
+	game_manager._update_lives(lives)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -34,6 +39,7 @@ func _physics_process(delta):
 	# Play animations
 	if is_on_floor():
 		if isHurting:
+			game_manager._update_lives(lives)
 			animated_sprite.play("hurt")
 		elif not isHurting:
 			if direction == 0:

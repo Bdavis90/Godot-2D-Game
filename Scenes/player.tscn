@@ -229,7 +229,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_4uml7")
 animation = &"hurt"
 autoplay = "idle"
-frame_progress = 0.513422
+frame_progress = 0.0995895
 script = SubResource("GDScript_7jnuk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
